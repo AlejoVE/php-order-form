@@ -16,6 +16,16 @@ function whatIsHappening() {
     var_dump($_SESSION);
 }
 
+// Remove all illegal characters from email
+$email = $_POST['email'];
+$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
+//Validate e-mail
+// $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+echo 'Email<br/>';
+var_dump($email);
+
+
 //your products with their price.
 $products = [
     ['name' => 'Margherita', 'price' => 8],
