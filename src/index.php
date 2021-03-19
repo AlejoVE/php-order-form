@@ -2,29 +2,53 @@
 //this line makes PHP behave in a more strict way
 declare(strict_types=1);
 
+
 //we are going to use session variables so we need to enable sessions
 session_start();
+$_SESSION["email"]=  "";
+$_SESSION["street"]= "";
+$_SESSION["street_number"]= "";
+$_SESSION["city"]= "";
+$_SESSION["zip_code"]= "";
 
-function whatIsHappening() {
-    echo '<h2>$_GET</h2>';
-    var_dump($_GET);
-    echo '<h2>$_POST</h2>';
-    var_dump($_POST);
-    echo '<h2>$_COOKIE</h2>';
-    var_dump($_COOKIE);
-    echo '<h2>$_SESSION</h2>';
-    var_dump($_SESSION);
-}
+//HANDLE SUBMIT
+if(isset($_POST['submit'])){
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $street = filter_var($_POST['street'], FILTER_SANITIZE_STRING);
+    $street_number= filter_var($_POST['streetnumber'], FILTER_SANITIZE_NUMBER_INT);
+    $city = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
+    $zip_code = filter_var($_POST['zipcode'], FILTER_SANITIZE_NUMBER_INT);
+    $subject = "Order";
 
-// Remove all illegal characters from email
-$email = $_POST['email'];
-$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+    //SET SESSION VARIABLES
+    $_SESSION["email"]=  $email;
+    $_SESSION["street"]= $street;
+    $_SESSION["street_number"]= $street_number;
+    $_SESSION["city"]= $city;
+    $_SESSION["zip_code"]= $zip_code;
 
-//Validate e-mail
-// $email = filter_var($email, FILTER_VALIDATE_EMAIL);
-echo 'Email<br/>';
-var_dump($email);
+    if(is_numeric($zip_code) && filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $to = "luis.alejandro.499be@gmail.com";
+        $body = "From: {$email} \l\n Street: {$street} \l\n Steer number: {$street_number} \l\n Zipcode: {$zip_code}";
+        mail($to, $subject, $body);
+    } else {
+        echo '<div class="alert alert-danger" role="alert">
+        Please fill out all the fields!
+      </div>';
+    };
 
+};
+
+// function whatIsHappening() {
+//     echo '<h2>$_GET</h2>';
+//     var_dump($_GET);
+//     echo '<h2>$_POST</h2>';
+//     var_dump($_POST);
+//     echo '<h2>$_COOKIE</h2>';
+//     var_dump($_COOKIE);
+//     echo '<h2>$_SESSION</h2>';
+//     var_dump($_SESSION);
+// };
 
 //your products with their price.
 $products = [
@@ -58,7 +82,7 @@ function get_products ($value) {
     } 
 
     return $products;
-}
+};
 
 $totalValue = 0;
 

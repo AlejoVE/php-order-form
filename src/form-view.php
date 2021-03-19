@@ -1,3 +1,4 @@
+<?php require_once 'index.php' ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,12 +22,12 @@
             </li>
         </ul>
     </nav>
-    <?php require_once 'index.php' ?>
+    
     <form method="post">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="email">E-mail:</label>
-                <input type="text" id="email" name="email" class="form-control"/>
+                <input type="text" id="email" name="email" class="form-control" value="<?php echo $_SESSION['email']?>" required/>
             </div>
             <div></div>
         </div>
@@ -37,21 +38,21 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label>
-                    <input type="text" name="street" id="street" class="form-control" required>
+                    <input type="text" name="street" id="street" class="form-control" value="<?php echo $_SESSION['street']?>" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label>
-                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" required>
+                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php echo $_SESSION['street_number']?>" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City:</label>
-                    <input type="text" id="city" name="city" class="form-control" required>
+                    <input type="text" id="city" name="city" class="form-control" value="<?php echo $_SESSION['city']?>" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label>
-                    <input type="text" id="zipcode" name="zipcode" class="form-control" required>
+                    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?php echo $_SESSION['zip_code']?>" required>
                 </div>
             </div>
         </fieldset>
@@ -70,7 +71,7 @@
             Express delivery (+ 5 EUR) 
         </label>
             
-        <button type="submit" class="btn btn-primary">Order!</button>
+        <button type="submit" class="btn btn-primary" name='submit'>Order!</button>
     </form>
 
     <footer>You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in pizza(s) and drinks.</footer>
