@@ -27,7 +27,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="email">E-mail:</label>
-                <input type="text" id="email" name="email" class="form-control" value="<?php echo $_SESSION['email']?>" required/>
+                <input type="text" id="email" name="email" class="form-control" value="<?= $_SESSION['email'] ?? ""?>" required/>
             </div>
             <div></div>
         </div>
@@ -38,21 +38,21 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label>
-                    <input type="text" name="street" id="street" class="form-control" value="<?php echo $_SESSION['street']?>" required>
+                    <input type="text" name="street" id="street" class="form-control" value="<?= $_SESSION['street'] ?? ""?>" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label>
-                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php echo $_SESSION['street_number']?>" required>
+                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?= $_SESSION['streetNumber'] ?? ""?>" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City:</label>
-                    <input type="text" id="city" name="city" class="form-control" value="<?php echo $_SESSION['city']?>" required>
+                    <input type="text" id="city" name="city" class="form-control" value="<?= $_SESSION['city'] ?? ""?>" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label>
-                    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?php echo $_SESSION['zip_code']?>" required>
+                    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?= $_SESSION['zipCode'] ?? ""?>" required>
                 </div>
             </div>
         </fieldset>
@@ -61,8 +61,9 @@
             <legend>Products</legend>
             <?php foreach ($products AS $i => $product): ?>
                 <label>
-                    <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> -
-                    &euro; <?php echo number_format($product['price'], 2) ?></label><br />
+                    <input type="checkbox" value="<?= $product['price'] ?>" name="product-<?php echo $i ?>"/> <?php echo $product['name'] ?> -
+                    &euro; <?php echo number_format($product['price'], 2) ?>
+                </label><br />
             <?php endforeach; ?>
         </fieldset>
         
@@ -74,7 +75,7 @@
         <button type="submit" class="btn btn-primary" name='submit'>Order!</button>
     </form>
 
-    <footer>You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in pizza(s) and drinks.</footer>
+    <footer>You already ordered <strong>&euro; <?= $_COOKIE["total_spend"] ?? 0 ?></strong> in pizza(s) and drinks.</footer>
 </div>
 
 <style>
