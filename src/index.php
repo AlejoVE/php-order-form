@@ -54,17 +54,20 @@ if(isset($_POST['submit'])){
         $_SESSION["streetNumber"]= $streetNumber;
         $_SESSION["city"]= $city;
         $_SESSION["zipCode"]= $zipCode;
+
+
+
+        $totalValue = setTotalValue($products);
+        setcookie("total_spend", "{$totalValue}", time() + 3600);
        
         //send email
         $to = "luis.alejandro.499be@gmail.com";
         $body = "From: {$email} \l\n Street: {$street} \l\n Steer number: {$streetNumber} \l\n Zipcode: {$zipCode}";
         mail($to, $subject, $body);
 
-        $totalValue = setTotalValue($products);
-        setcookie("total_spend", "{$totalValue}", time() + 3600);
 
         //display to user
-        if(!empty($_POST["express_delivery"])){
+        if(isset($_POST["express_delivery"])){
             echo '<div class="alert alert-success" role="alert">
             Your order has been  sent, your food will arrive in 30 minutes, thank you!
           </div>';
@@ -82,17 +85,6 @@ if(isset($_POST['submit'])){
 
 };
 
-// function whatIsHappening() {
-//     echo '<h2>$_GET</h2>';
-//     var_dump($_GET);
-//     echo '<h2>$_POST</h2>';
-//     print_r($_POST);
-//     echo '<h2>$_COOKIE</h2>';
-//     var_dump($_COOKIE);
-//     echo '<h2>$_SESSION</h2>';
-//     var_dump($_SESSION);
-// };
-
 function setTotalValue($products) {
     if(isset($_COOKIE['total_spend'])) {
         $totalValue = (float)$_COOKIE['total_spend'];
@@ -101,13 +93,14 @@ function setTotalValue($products) {
     }
 
     foreach ($products AS $i => $product){
-        if(!empty($_POST["product-{$i}"])){
+        if(isset($_POST["product-{$i}"])){
             $price = $product["price"];
             $totalValue += $price;
         };
     };
 
-    if(!empty($_POST["express_delivery"])){
+  
+    if(isset($_POST["express_delivery"])){
         $totalValue += 5;
     };
     

@@ -1,0 +1,24 @@
+{
+  "name": "php-order-form",
+  "version": "1.0.0",
+  "description": "You have now installed Docker on your computer. Congratulations ! 🥳 Now we will present you your home made environment.",
+  "main": "index.js",
+  "dependencies": {
+    "node-sass": "^5.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "scss": "node-sass --watch src/scss --output src/css --source-map true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlejoVE/php-order-form.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlejoVE/php-order-form/issues"
+  },
+  "homepage": "https://github.com/AlejoVE/php-order-form#readme"
+}
