@@ -8,7 +8,7 @@ body {
   background-image: url("https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   color: white;
   background-size: cover;
-  width: 90%;
+  width: 100%;
   margin: auto;
   border: 1px solid black;
   padding-bottom: 20px; }
@@ -18,7 +18,12 @@ body {
     padding-top: 5px;
     padding-bottom: 5px; }
   .main-container footer {
-    font-size: 20px; }
+    font-size: 20px;
+    background-color: whitesmoke;
+    width: 33%;
+    color: black;
+    margin: auto;
+    border-radius: 40px; }
 
 .top-container {
   color: black;
@@ -36,7 +41,9 @@ body {
   justify-content: center;
   align-items: center; }
   .form-container button {
-    margin-bottom: 40px; }
+    margin-bottom: 40px;
+    width: 20%;
+    font-size: 24px; }
 
 .address-container {
   display: flex;
