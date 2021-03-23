@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
     $zipCode = filter_var($_POST['zipcode'], FILTER_SANITIZE_NUMBER_INT);
     $subject = "Order";
     
-    if(!is_numeric($street) && !is_numeric($city) && is_numeric($zipCode) && filter_var($email, FILTER_VALIDATE_EMAIL)){
+    if(!is_numeric($street) && is_infinite($streetNumber) && !is_numeric($city) && is_numeric($zipCode) && filter_var($email, FILTER_VALIDATE_EMAIL)){
 
         // SET SESSION VARIABLES
         $_SESSION["email"]=  $email;
