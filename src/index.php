@@ -98,6 +98,10 @@ function setTotalValue($products) {
             $totalValue += $price;
         };
     };
+
+    if(isset($_POST["express_delivery"])){
+        $totalValue += 5;
+    };
     
   return $totalValue;
 };
