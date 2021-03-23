@@ -27,7 +27,7 @@
     <form class="form-container" method="post">
             <div class="top-container">
                 <div class="email-container">
-                    <label for="email"><h4>Email:</h4></label>
+                    <label for="email"><h4>Email</h4></label>
                     <input type="text" id="email" name="email" class="form-control email-input" value="<?= $_SESSION['email'] ?? ""?>" required/>
                 </div>
                 
