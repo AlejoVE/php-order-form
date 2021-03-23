@@ -11,7 +11,7 @@
     <title>Order Pizzas & drinks</title>
 </head>
 <body>
-<div class="container  main-container">
+<div class="main-container">
     <h1>La Pizzeria D'Alessandro</h1>
     <!-- <nav>
         <ul class="nav">
@@ -25,36 +25,36 @@
     </nav> -->
     
     <form class="form-container" method="post">
-            <div class="email-container">
-                <label for="email"><h4>Email:</h4></label>
-                <input type="text" id="email" name="email" class="form-control email-input" value="<?= $_SESSION['email'] ?? ""?>" required/>
+            <div class="top-container">
+                <div class="email-container">
+                    <label for="email"><h4>Email:</h4></label>
+                    <input type="text" id="email" name="email" class="form-control email-input" value="<?= $_SESSION['email'] ?? ""?>" required/>
+                </div>
+                
+                        <fieldset class="address-container">
+                <h4>Address</h4>
+                <div class="sub-container">
+                    <div>
+                        <label for="street">Street:</label>
+                        <input type="text" name="street" id="street" class="form-control" value="<?= $_SESSION['street'] ?? ""?>" required>
+                    </div>
+                    <div>
+                        <label for="streetnumber">Street number:</label>
+                        <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?= $_SESSION['streetNumber'] ?? ""?>" required>
+                    </div>
+                </div>
+                <div class="sub-container">
+                    <div>
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" class="form-control" value="<?= $_SESSION['city'] ?? ""?>" required>
+                    </div>
+                    <div>
+                        <label for="zipcode">Zipcode</label>
+                        <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?= $_SESSION['zipCode'] ?? ""?>" required>
+                    </div>
+                </div>
+                        </fieldset>
             </div>
-
-        <fieldset class="address-container">
-        
-            <h4>Address</h4>
-
-            <div class="sub-container">
-                <div>
-                    <label for="street">Street:</label>
-                    <input type="text" name="street" id="street" class="form-control" value="<?= $_SESSION['street'] ?? ""?>" required>
-                </div>
-                <div>
-                    <label for="streetnumber">Street number:</label>
-                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?= $_SESSION['streetNumber'] ?? ""?>" required>
-                </div>
-            </div>
-            <div class="sub-container">
-                <div>
-                    <label for="city">City:</label>
-                    <input type="text" id="city" name="city" class="form-control" value="<?= $_SESSION['city'] ?? ""?>" required>
-                </div>
-                <div>
-                    <label for="zipcode">Zipcode</label>
-                    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?= $_SESSION['zipCode'] ?? ""?>" required>
-                </div>
-            </div>
-        </fieldset>
 
         <fieldset class="products-container">
             <h4>Our menu</h4>
@@ -81,12 +81,12 @@
                 </tr>
             <?php endforeach; ?>
             </table>
-        </fieldset>
-        
         <label class="express">
             <input type="checkbox" name="express_delivery"  value="5" /> 
             Express delivery (+ 5 EUR) 
         </label>
+        </fieldset>
+        
             
         <button type="submit" class="btn btn-success" name='submit'>Order!</button>
     </form>
